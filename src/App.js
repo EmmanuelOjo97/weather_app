@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const url = "https://api.openweathermap.org/data/2.5/";
@@ -16,7 +15,7 @@ function App() {
         .then((result) => {
           setWeather(result);
           setQuery("");
-          // console.log(result);
+          console.log(result);
         });
     }
   };
@@ -29,7 +28,6 @@ function App() {
       .then((result) => {
         setWeather(result);
         setQuery("");
-        console.log(result);
       });
   }, []);
 
@@ -62,7 +60,14 @@ function App() {
             </div>
             <div className="weather-box">
               <div className="temp">{Math.round(weather.main.temp)}°c</div>
-              <div className="weather">{weather.weather[0].main}</div>
+              <div className="weather">
+                <h2>{weather.weather[0].main}</h2>
+
+                <img
+                  src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                  alt=""
+                />
+              </div>
             </div>
           </div>
         ) : (
